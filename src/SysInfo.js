@@ -12,53 +12,10 @@
  * displayFromStart (true / false) : Will show or hide SysInfo on page load.
  * queryStringName (string) : The name of the query string that SysInfo will look for when hidden.
  */
-var SysInfo = function(options){
-
-	var o = options || {};
-
-	var container,
-		q = o.queryStringName || 'sysinfo',
-		displayFromStart = Boolean(o.displayFromStart) || true,
-		uid = 'c08fe529b214d2058c58';
-
-	var build = function(){
-
-		if(container || document.querySelector('#' + uid)){
-			return;
-		}
-
-		container = document.createElement('div');
-		container.style.cssText = "position: fixed; line-height: 100%; zoom: reset; display: block; text-align: left; vertical-align: baseline; border: 0 none; z-index: 20000; top: 10px; left: 10px; font-family: 'Lucida Console'; color: white; Monaco, monospace; font-size: 11px; margin: 10px; padding: 5px; background-color: rgba(100, 100, 100, 0.9); width: 240px; max-width: 360px; min-width: 240px;-webkit-user-drag: none;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;";
-		container.id = uid;
-
-		var dimContainer = document.createElement('div');
-			dimContainer.id = 'dim';
-			dimContainer.style.cssText = 'padding-bottom: 5px; font-weight: bold';
-			container.appendChild(dimContainer);
-
-		var sysContainer = document.createElement('div');
-			sysContainer.style.cssText = 'background-color : rgba(0,0,0,0.5); padding: 5px;';
-			container.appendChild(sysContainer);
-
-		var sysInfo = new UAParser().getResult();
-		sysContainer.appendChild(document.createTextNode(JSON.stringify(sysInfo, null, 1)));
-
-		container.onclick = function(){
-			remove();
-		};
-
-		document.body.appendChild(container);
-		window.addEventListener('resize', onResize);
-		onResize(null);
-	};
+var SysInfo = function(){
 
 	var onResize = function(e){
-
-		if(!container){
-			return;
-		}
-
-		container.querySelector('#dim').innerHTML = window.innerWidth + 'x' + window.innerHeight;
+		dimContainer.innerHTML = window.innerWidth + 'x' + window.innerHeight;
 	};
 
 	var remove = function(){
@@ -96,15 +53,36 @@ var SysInfo = function(options){
 		return dict;
 	};
 
+	var container = document.createElement('div');
+	container.style.cssText = "position: fixed; line-height: 100%; zoom: reset; display: block; text-align: left; vertical-align: baseline; border: 0 none; z-index: 20000; top: 10px; left: 10px; font-family: 'Lucida Console'; color: white; Monaco, monospace; font-size: 11px; margin: 10px; padding: 5px; background-color: rgba(100, 100, 100, 0.9); width: 240px; max-width: 360px; min-width: 240px;-webkit-user-drag: none;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;";
+
+	var dimContainer = document.createElement('div');
+	dimContainer.id = 'dim';
+	dimContainer.style.cssText = 'padding-bottom: 5px; font-weight: bold';
+	container.appendChild(dimContainer);
+
+	var sysContainer = document.createElement('div');
+	sysContainer.style.cssText = 'background-color : rgba(0,0,0,0.5); padding: 5px;';
+	container.appendChild(sysContainer);
+
+	var sysInfo = new UAParser().getResult();
+	sysContainer.appendChild(document.createTextNode(JSON.stringify(sysInfo, null, 1)));
+
+	container.onclick = function(){
+		remove();
+	};
+
+	window.addEventListener('resize', onResize);
+	onResize(null);
+
 	var qs = parseQueryString();
 
-	if(qs[q] || displayFromStart){
-		build();
+	if(qs['sysInfo'] && !!document.body){
+		document.body.appendChild(container);
 	}
 
 	return {
-		remove : remove,
-		build : build
+		domElement : container
 	};
 };
 
