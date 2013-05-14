@@ -19,8 +19,8 @@
 	<script>
 
         // Create a instance of SysInfo
-        var sysInfo = new SysInfo();
-        document.body.appendChild(sysInfo.domElement);
+        //var sysInfo = new SysInfo();
+        //document.body.appendChild(sysInfo.domElement);
 
     </script>
 
@@ -34,12 +34,11 @@
     function(){
         var script=document.createElement('script');
         script.src='http://raw.github.com/ChristianDen/SysInfo/master/dist/sysinfo.min.js';
-        script.type='text/javascript';
         document.body.appendChild(script);
 
-        var script2 = document.createElement('script');
-        script2.innerHTML = 'var interval = setInterval(function(){console.log(interval);if(typeof SysInfo==\'function\'){clearInterval(interval);var sysInfo = new SysInfo();document.body.appendChild(sysInfo.domElement)}}, 100);';
-        document.body.appendChild(script2);
+        script = document.createElement('script');
+        script.innerHTML = 'var interval = setInterval(function(){if(window.SysInfo){clearInterval(interval);var sysInfo = new SysInfo(); document.body.appendChild(sysInfo.domElement)}});';
+        document.body.appendChild(script);
     })();">SysInfo</a>
 
 

@@ -86,4 +86,5 @@ var SysInfo = function(){
 	};
 };
 
+SysInfo.REVISION = '1.0.0';
 window.SysInfo = SysInfo;
