@@ -89,6 +89,7 @@ var SysInfo = function(){
 
 	return {
 		REVISION: 1,
-		domElement : container
+		domElement : container,
+		update : resize
 	};
 };
