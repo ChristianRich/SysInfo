@@ -28,7 +28,7 @@ var SysInfo = function(options){
 		}
 
 		container = document.createElement('div');
-		container.style.cssText = "position: fixed; line-height: 100%; zoom: reset; display: block; text-align: left; vertical-align: baseline; border: 0 none; z-index: 9999; top: 10px; left: 10px; font-family: 'Lucida Console'; color: white; Monaco, monospace; font-size: 11px; margin: 10px; padding: 5px; background-color: rgb(100, 100, 100); width: 240px; max-width: 360px; min-width: 240px;-webkit-user-drag: none;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;";
+		container.style.cssText = "position: fixed; line-height: 100%; zoom: reset; display: block; text-align: left; vertical-align: baseline; border: 0 none; z-index: 20000; top: 10px; left: 10px; font-family: 'Lucida Console'; color: white; Monaco, monospace; font-size: 11px; margin: 10px; padding: 5px; background-color: rgba(100, 100, 100, 0.9); width: 240px; max-width: 360px; min-width: 240px;-webkit-user-drag: none;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;";
 		container.id = uid;
 
 		var dimContainer = document.createElement('div');
@@ -37,7 +37,7 @@ var SysInfo = function(options){
 			container.appendChild(dimContainer);
 
 		var sysContainer = document.createElement('div');
-			sysContainer.style.cssText = 'background-color : rgb(50,50,50); padding: 5px;';
+			sysContainer.style.cssText = 'background-color : rgba(0,0,0,0.5); padding: 5px;';
 			container.appendChild(sysContainer);
 
 		var sysInfo = new UAParser().getResult();
