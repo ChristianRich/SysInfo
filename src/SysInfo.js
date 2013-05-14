@@ -6,7 +6,7 @@
  *
  * 1) From a query string. Just type 'sysinfo=true' in the URL and it will pop open (as long as the script is included in the page).
  *
- * 2) Via JavaScript:
+ * 2) JavaScript:
  *
  *    var sysInfo = new SysInfo();
  *    document.body.appendChild(sysInfo.domElement);
@@ -16,11 +16,6 @@
 var SysInfo = function(){
 
 	var onResize = function(){
-
-		if(!container.parentNode){
-			return;
-		}
-
 		dimContainer.innerHTML = window.innerWidth + 'x' + window.innerHeight;
 	};
 
