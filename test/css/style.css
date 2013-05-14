@@ -1,0 +1,19 @@
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body, html {
+	background: #fff url('../images/body-noise.png') fixed;
+	font: 14px Georgia, serif;  
+	margin: 20px;
+	padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
