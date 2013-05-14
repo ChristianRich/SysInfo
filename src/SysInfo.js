@@ -1,20 +1,26 @@
 /**
- * Displays a system information overlay in the top left corner of the browser.
+ * Displays system information overlay in the top left corner of the screen.
  * Currently screen resolution and user agent is included.
  *
- * SysInfo can be activated from a query string:
+ * SysInfo can be activated in three two ways:
  *
- * Just include 'sysinfo=true' in the URL and it will display.
- * The name of the query string that SysInfo looks for is customizable.
+ * 1) From a query string. Just type 'sysinfo=true' in the URL and it will pop open (as long as the script is included in the page).
  *
- * Options include:
+ * 2) Via JavaScript:
  *
- * displayFromStart (true / false) : Will show or hide SysInfo on page load.
- * queryStringName (string) : The name of the query string that SysInfo will look for when hidden.
+ *    var sysInfo = new SysInfo();
+ *    document.body.appendChild(sysInfo.domElement);
+ *
+ * 3) Via a bookmarklet (see my blog for details)
  */
 var SysInfo = function(){
 
 	var onResize = function(e){
+
+		if(!container.parentNode){
+			return;
+		}
+
 		dimContainer.innerHTML = window.innerWidth + 'x' + window.innerHeight;
 	};
 
@@ -65,8 +71,8 @@ var SysInfo = function(){
 	sysContainer.style.cssText = 'background-color : rgba(0,0,0,0.5); padding: 5px;';
 	container.appendChild(sysContainer);
 
-	var sysInfo = new UAParser().getResult();
-	sysContainer.appendChild(document.createTextNode(JSON.stringify(sysInfo, null, 1)));
+	var ua = new UAParser().getResult();
+	sysContainer.appendChild(document.createTextNode(JSON.stringify(ua, null, 1)));
 
 	container.onclick = function(){
 		remove();
@@ -77,14 +83,12 @@ var SysInfo = function(){
 
 	var qs = parseQueryString();
 
-	if(qs['sysInfo'] && !!document.body){
+	if(qs['sysinfo'] && !!document.body){
 		document.body.appendChild(container);
 	}
 
 	return {
+		REVISION: 1,
 		domElement : container
 	};
 };
-
-SysInfo.REVISION = '1.0.0';
-window.SysInfo = SysInfo;

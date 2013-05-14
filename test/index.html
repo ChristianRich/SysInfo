@@ -4,12 +4,6 @@
         <title>SysInfo.js testing page</title>
         <script src="../dist/sysinfo.min.js"></script>
         <link rel="stylesheet" href="css/style.css" media="screen" />
-
-        <!--<script src="../libs/ua-parser.js"></script>-->
-        <!--<script src="../src/SysInfo.js"></script>-->
-
-
-
     </head>
     <body>
 
@@ -19,51 +13,25 @@
 	<script>
 
         // Create a instance of SysInfo
-        //var sysInfo = new SysInfo();
+        var sysInfo = new SysInfo();
+
+
         //document.body.appendChild(sysInfo.domElement);
 
     </script>
 
     <br><br><br><br><br><br><br>
 
-
     <p>Drag the bookmarklet to the the browsers bookmarks bar:</p>
 
     <a class="bookmarklet" href="javascript:(
-
-    function(){
-        var script=document.createElement('script');
-        script.src='http://raw.github.com/ChristianDen/SysInfo/master/dist/sysinfo.min.js';
-        document.body.appendChild(script);
-
-        script = document.createElement('script');
-        script.innerHTML = 'var interval = setInterval(function(){if(window.SysInfo){clearInterval(interval);var sysInfo = new SysInfo(); document.body.appendChild(sysInfo.domElement)}});';
-        document.body.appendChild(script);
-    })();">SysInfo</a>
-
-
-
-
-
-    <!--(function () {-->
-        <!--var script = document.createElement('script');-->
-        <!--script.src = 'http://github.com/mrdoob/stats.js/raw/master/build/stats.min.js';-->
-        <!--document.body.appendChild(script);-->
-    <!---->
-        <!--script = document.createElement('script');-->
-        <!--script.innerHTML = 'var interval=setInterval(function(){if(typeof Stats==\'function\'){clearInterval(interval);var stats=new Stats();stats.domElement.style.position=\'fixed\';stats.domElement.style.left=\'0px\';stats.domElement.style.top=\'0px\';stats.domElement.style.zIndex=\'10000\';document.body.appendChild(stats.domElement);setInterval(function(){stats.update();},1000/60);}},100);';-->
-        <!--document.body.appendChild(script);-->
-    <!--})();-->
-
-
-
-
-
-
-
-
-
-
-
+        function () {
+            var script = document.createElement('script');
+            script.src = 'http://raw.github.com/ChristianDen/SysInfo/master/dist/sysinfo.min.js';
+            document.body.appendChild(script);
+            script2 = document.createElement('script');
+            script2.innerHTML = 'var interval=setInterval(function(){if(typeof SysInfo==\'function\'){clearInterval(interval);var sysInfo=new SysInfo();document.body.appendChild(sysInfo.domElement)}},100);';
+            document.body.appendChild(script2);
+        })()">SysInfo</a>
     </body>
 </html>
