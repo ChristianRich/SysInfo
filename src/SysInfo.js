@@ -15,7 +15,7 @@
  */
 var SysInfo = function(){
 
-	var onResize = function(e){
+	var onResize = function(){
 
 		if(!container.parentNode){
 			return;
@@ -78,14 +78,14 @@ var SysInfo = function(){
 		remove();
 	};
 
-	window.addEventListener('resize', onResize);
-	onResize(null);
-
 	var qs = parseQueryString();
 
 	if(qs['sysinfo'] && !!document.body){
 		document.body.appendChild(container);
 	}
+
+	window.addEventListener('resize', onResize);
+	onResize();
 
 	return {
 		REVISION: 1,
