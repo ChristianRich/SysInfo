@@ -18,17 +18,18 @@ var SysInfo = function(options){
 
 	var container,
 		q = o.queryStringName || 'sysinfo',
-		displayFromStart = Boolean(o.displayFromStart) || true;
+		displayFromStart = Boolean(o.displayFromStart) || true,
+		uid = 'c08fe529b214d2058c58';
 
 	var build = function(){
 
-		if(container){
+		if(container || document.querySelector('#' + uid)){
 			return;
 		}
 
 		container = document.createElement('div');
-		container.style.cssText = "position: fixed; top: 10px; left: 10px; font-family: 'Lucida Console'; color: white; Monaco, monospace; font-size: 11px; margin: 10px; padding: 5px; background-color: rgb(100, 100, 100); width: 240px; max-width: 360px; min-width: 240px;-webkit-user-drag: none;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;";
-		container.id = 'sysInfo';
+		container.style.cssText = "position: fixed; line-height: 100%; text-align: left; vertical-align: baseline; border: 0 none; z-index: 9999; top: 10px; left: 10px; font-family: 'Lucida Console'; color: white; Monaco, monospace; font-size: 11px; margin: 10px; padding: 5px; background-color: rgb(100, 100, 100); width: 240px; max-width: 360px; min-width: 240px;-webkit-user-drag: none;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;";
+		container.id = uid;
 
 		var dimContainer = document.createElement('div');
 			dimContainer.id = 'dim';

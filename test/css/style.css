@@ -17,3 +17,9 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+.bookmarklet{
+	padding: 5px;
+	background-color: #ff0080;
+	border: 1px solid black;
+}
