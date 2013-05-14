@@ -13,7 +13,7 @@
 	<script>
 
         // Create a instance of SysInfo
-        var sysInfo = new SysInfo();
+        //var sysInfo = new SysInfo();
 
     </script>
 
@@ -21,7 +21,31 @@
 
 
     <p>Drag the bookmarklet to the the browsers bookmarks bar:</p>
-    <a class="bookmarklet" href="javascript:(function(){var script=document.createElement('script');script.src='https://raw.github.com/ChristianDen/SysInfo/master/dist/sysinfo.min.js';document.body.appendChild(script); new SysInfo();})();">SysInfo</a>
+
+    <a class="bookmarklet" href="javascript:(
+
+    function(){
+        var script=document.createElement('script');
+        script.src='http://raw.github.com/ChristianDen/SysInfo/master/dist/sysinfo.min.js';
+        document.body.appendChild(script);
+
+        var interval = setInterval(function(){
+
+            console.log('time: ' + interval + ' / ' + SysInfo);
+
+            if(SysInfo){
+                clearInterval(interval);
+                var sysInfo = new SysInfo();
+
+                console.log('create obj')
+            }
+
+
+
+        }, 100);
+    })();">SysInfo</a>
+
+
 
 
 

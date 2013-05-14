@@ -107,3 +107,5 @@ var SysInfo = function(options){
 		build : build
 	};
 };
+
+window.SysInfo = SysInfo;
