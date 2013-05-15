@@ -1,30 +1,6 @@
 /**
  * SysInfo by Christian Schlostich
  * https://github.com/ChristianDen/SysInfo
- *
- * Displays system information overlay in the top left corner of the screen.
- * Currently screen resolution and user agent is included.
- *
- * How to use:
- *
- * First you need to include the script in your page:
- * <script src="http://raw.github.com/ChristianDen/SysInfo/master/dist/sysinfo.min.js"></script>
- *
- * Now you've got three options:
- *
- * 1) Activate SysInfo with a query string. Just append '?s' to the url.
- *
- *    Example:
- *    http://myawesomewebsite.com/?s
- *
- * 2) JavaScript:
- *
- *    <script>
- *        var sysInfo = new SysInfo();
- *        document.body.appendChild(sysInfo.domElement);
- *    </script>
- *
- * 3) Via a bookmarklet. This is only applicable for desktop, since I haven't found a solid way of using bookemarklets on mobile and tablet (see my blog for details)
  */
 var SysInfo = function(){
 
